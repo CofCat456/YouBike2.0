@@ -12,11 +12,12 @@ const config: Config = {
       fontFamily: {
         sans: ['var(--font-sans)', ...fontFamily.sans],
       },
-      backgroundImage: {
-        'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-        'gradient-conic':
-          'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
-      },
+      colors: {
+        'primary': {
+          '100': 'rgba(181, 204, 34)',
+          '800': 'rgba(103, 117, 16)'
+        },
+      }
     },
   },
   plugins: [],

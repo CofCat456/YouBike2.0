@@ -1,5 +1,7 @@
-import type { Metadata } from 'next'
 import './globals.css'
+
+import type { Metadata } from 'next'
+
 import { sansFont } from '~/lib/font'
 
 export const metadata: Metadata = {
@@ -14,7 +16,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh-TW">
-      <body className={`${sansFont.variable} font-sans`} >{children}</body>
+      <body className={`${sansFont.variable} font-sans text-[rgb(50,50,50)]`} >{children}</body>
     </html>
   )
 }
