@@ -1,5 +1,5 @@
-import type { Config } from 'tailwindcss'
-import { fontFamily } from 'tailwindcss/defaultTheme'
+import type { Config } from 'tailwindcss';
+import { fontFamily } from 'tailwindcss/defaultTheme';
 
 const config: Config = {
   content: [
@@ -13,13 +13,16 @@ const config: Config = {
         sans: ['var(--font-sans)', ...fontFamily.sans],
       },
       colors: {
-        'primary': {
+        primary: {
           '100': 'rgba(181, 204, 34)',
-          '800': 'rgba(103, 117, 16)'
+          '800': 'rgba(103, 117, 16)',
         },
-      }
+      },
+      spacing: {
+        desktop: '124px',
+      },
     },
   },
   plugins: [],
-}
-export default config
+};
+export default config;
