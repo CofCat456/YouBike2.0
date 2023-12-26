@@ -1,9 +1,12 @@
 import './globals.css';
+import './antd.css';
 
 import type { Metadata } from 'next';
 
 import Header from '~/components/Header';
 import { sansFont } from '~/lib/font';
+
+import StyledComponentsRegistry from './AntdRegistry';
 
 export const metadata: Metadata = {
   title: 'Create Next App',
@@ -17,9 +20,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="zh-TW">
-      <body className={`${sansFont.variable} font-sans text-[rgb(50,50,50)]`}>
-        <Header />
-        {children}
+      <body className={`${sansFont.variable} font-sans text-config-text`}>
+        <StyledComponentsRegistry>
+          <Header />
+          {children}
+        </StyledComponentsRegistry>
       </body>
     </html>
   );

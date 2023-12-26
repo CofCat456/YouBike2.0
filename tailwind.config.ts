@@ -17,6 +17,9 @@ const config: Config = {
           '100': 'rgba(181, 204, 34)',
           '800': 'rgba(103, 117, 16)',
         },
+        config: {
+          text: 'rgba(50, 50, 50)'
+        }
       },
       spacing: {
         desktop: '124px',

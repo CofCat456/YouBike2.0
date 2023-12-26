@@ -7,7 +7,7 @@ const Header: React.FC = () => {
     <header className="flex items-center border-b border-[rgb(235,235,235)] px-desktop">
       <Image src="/logo.png" alt="logo" width={95} height={95} />
       <nav className="ml-[60px] mr-auto">
-        <ul className='flex items-center gap-x-10'>
+        <ul className="flex items-center gap-x-10">
           {navList.map((nav) => (
             <li
               key={nav}
