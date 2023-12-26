@@ -1,20 +1,38 @@
-import Image from 'next/image';
+'use client';
 
-const navList = ['使用說明', '收費方式', '站點資訊', '最新消息', '活動專區'];
+import clsx from 'clsx';
+import Image from 'next/image';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
+
+import { navList } from '~/data/navs';
 
 const Header: React.FC = () => {
+  const pathname = usePathname();
+
   return (
     <header className="border-b border-[rgb(235,235,235)]">
       <div className="mx-auto flex max-w-desktop items-center">
-        <Image src="/logo.png" alt="logo" width={95} height={95} />
+        <Image
+          src="/site/logo.png"
+          alt="logo"
+          width={95}
+          height={95}
+          priority
+        />
         <nav className="ml-[60px] mr-auto">
           <ul className="flex items-center gap-x-10">
             {navList.map((nav) => (
               <li
-                key={nav}
-                className="text-lg font-medium leading-6 text-primary-800"
+                key={nav.link}
+                className={clsx(
+                  'text-lg font-medium leading-6',
+                  pathname === nav.title
+                    ? 'text-primary-100'
+                    : 'text-primary-800'
+                )}
               >
-                {nav}
+                <Link href={nav.link}>{nav.title}</Link>
               </li>
             ))}
           </ul>

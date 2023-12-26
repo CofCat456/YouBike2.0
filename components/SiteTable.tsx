@@ -3,14 +3,17 @@
 import { Table } from 'antd';
 import type { ColumnsType } from 'antd/es/table';
 
-interface DataType {
-  key: number;
-  city: string;
-  dist: string;
-  name: string;
-  remaining_amout: number;
-  seats_amout: number;
+import { type SiteData } from '~/types';
+
+interface Props {
+  currCity: string;
+  datas: SiteData[];
 }
+
+type DataType = { city: string } & Pick<
+  SiteData,
+  'sno' | 'sarea' | 'sna' | 'sbi' | 'bemp'
+>;
 
 const columns: ColumnsType<DataType> = [
   {
@@ -21,91 +24,45 @@ const columns: ColumnsType<DataType> = [
   },
   {
     title: '區域',
-    dataIndex: 'dist',
-    key: 'dist',
+    dataIndex: 'sarea',
+    key: 'sarea',
     align: 'center',
   },
   {
     title: '站點名稱',
-    dataIndex: 'name',
-    key: 'name',
+    dataIndex: 'sna',
+    key: 'sna',
     align: 'center',
   },
   {
     title: '可借車輛',
-    key: 'remaining_amout',
-    dataIndex: 'remaining_amout',
+    key: 'sbi',
+    dataIndex: 'sbi',
     align: 'center',
     render: (text) => <span className="text-primary-100">{text}</span>,
   },
   {
     title: '可還空位',
-    key: 'seats_amout',
-    dataIndex: 'seats_amout',
+    key: 'bemp',
+    dataIndex: 'bemp',
     align: 'center',
     render: (text) => <span className="text-primary-100">{text}</span>,
   },
 ];
 
-const data: DataType[] = [
-  {
-    key: 1,
-    city: '台北市',
-    dist: '松山區',
-    name: '台北市台北市台北市台北市台北市台北市台北市',
-    remaining_amout: 12,
-    seats_amout: 12,
-  },
-  {
-    key: 2,
-    city: '台北市',
-    dist: '松山區',
-    name: '台北市台北市台北市台北市台北市台北市台北市',
-    remaining_amout: 12,
-    seats_amout: 12,
-  },
-  {
-    key: 3,
-    city: '台北市',
-    dist: '松山區',
-    name: '台北市台北市台北市台北市台北市台北市台北市',
-    remaining_amout: 12,
-    seats_amout: 12,
-  },
-  {
-    key: 4,
-    city: '台北市',
-    dist: '松山區',
-    name: '台北市台北市台北市台北市台北市台北市台北市',
-    remaining_amout: 12,
-    seats_amout: 12,
-  },
-  {
-    key: 5,
-    city: '台北市',
-    dist: '松山區',
-    name: '台北市台北市台北市台北市台北市台北市台北市',
-    remaining_amout: 12,
-    seats_amout: 12,
-  },
-  {
-    key: 6,
-    city: '台北市',
-    dist: '松山區',
-    name: '台北市台北市台北市台北市台北市台北市台北市',
-    remaining_amout: 12,
-    seats_amout: 12,
-  },
-];
-
-const SiteTable: React.FC = () => (
+const SiteTable: React.FC<Props> = ({ currCity, datas }) => (
   <Table
     columns={columns}
-    dataSource={data}
+    dataSource={datas.map((data) => ({
+      city: currCity,
+      key: data.sno,
+      sarea: data.sarea,
+      sna: data.sno,
+      sbi: data.sbi,
+      bemp: data.bemp,
+    }))}
     pagination={{ hideOnSinglePage: true }}
-  >
-    <Table.Column />
-  </Table>
+  />
 );
 
 export default SiteTable;

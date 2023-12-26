@@ -4,7 +4,7 @@ import { Select as AntdSelect, type SelectProps } from 'antd';
 import { type FunctionComponent } from 'react';
 
 export const defaultConfig: SelectProps = {
-  className: 'search',
+  popupClassName: 'search',
   bordered: true,
   showSearch: true,
 };

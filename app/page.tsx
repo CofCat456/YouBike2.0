@@ -1,29 +1,32 @@
 import { ConfigProvider } from 'antd';
-import Image from 'next/image';
 
-import DataTable from '~/components/DataTable';
 import SiteInfo from '~/components/SideInfo';
 import theme from '~/lib/theme';
+import { type SiteData } from '~/types';
 
-export default function Home() {
+const getData = async () => {
+  const res = await fetch(
+    'https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json'
+  );
+  const datas = (await res.json()) as SiteData[];
+  return datas;
+};
+
+export default async function Home() {
+  const siteDatas: SiteData[] = await getData();
+
+  const sareas = [
+    ...new Set(siteDatas.map(({ sarea }: { sarea: string }) => sarea)),
+  ];
+
+  const siteNames = siteDatas.map(({ sna }: { sna: string }) =>
+    sna.replace('YouBike2.0_', '')
+  );
+
   return (
     <ConfigProvider theme={theme}>
-      <main className="mx-auto mt-8 mb-11 w-full max-w-[1192px]">
-        <h3 className="text-2xl leading-6 text-primary-100">站點資訊</h3>
-        <div className="relative mb-[24.5px] mt-8 flex h-[300px]">
-          <div className="mr-auto">
-            <SiteInfo />
-          </div>
-          <div className="relative max-w-full self-end">
-            <Image
-              src="/Frame.png"
-              alt="background image"
-              width={502}
-              height={172}
-            />
-          </div>
-        </div>
-        <DataTable />
+      <main className="mx-auto mb-11 mt-8 w-full max-w-[1192px]">
+        <SiteInfo siteDatas={siteDatas} sareas={sareas} siteNames={siteNames} />
       </main>
     </ConfigProvider>
   );

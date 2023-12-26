@@ -1,62 +1,60 @@
 'use client';
 
-import { Checkbox } from 'antd';
+import Image from 'next/image';
+import { useEffect, useState } from 'react';
 
-import Search from '~/components/ui/Search';
-import Select from '~/components/ui/Select';
+import { citys, mockSareas } from '~/data';
+import { type SiteData } from '~/types';
 
-const SiteInfo = () => {
+import SiteSearch from './SideSearch';
+import SiteTable from './SiteTable';
+
+interface Props {
+  siteDatas: SiteData[];
+  sareas: string[];
+  siteNames: string[];
+}
+
+const SiteInfo: React.FC<Props> = ({ siteDatas, sareas, siteNames }) => {
+  const [currCity, setCurrCity] = useState('台北市');
+  const [currSareas, setCurrSareas] = useState(sareas);
+  const [selectSareas, setSelectSareas] = useState<string[]>([]);
+
+  const showSiteTable = siteDatas.filter((siteData) =>
+    selectSareas.includes(siteData.sarea)
+  );
+
+  useEffect(() => {
+    if (currCity === '台北市') setCurrSareas(() => sareas);
+    else setCurrSareas(() => mockSareas);
+  }, [currCity, sareas]);
+
   return (
     <>
-      {/* Select & Search block */}
-      <div className="mb-6 flex items-center gap-x-4">
-        <Select
-          placeholder="搜尋區域"
-          optionFilterProp="children"
-          options={[
-            {
-              value: 'jack',
-              label: 'Jack',
-            },
-            {
-              value: 'lucy',
-              label: 'Lucy',
-            },
-            {
-              value: 'tom',
-              label: 'Tom',
-            },
-          ]}
-        />
-
-        <Search
-          placeholder="搜尋區域"
-          optionFilterProp="children"
-          options={[
-            {
-              value: 'jack',
-              label: 'Jack',
-            },
-            {
-              value: 'lucy',
-              label: 'Lucy',
-            },
-            {
-              value: 'tom',
-              label: 'Tom',
-            },
-          ]}
-        />
+      <h3 className="text-2xl leading-6 text-primary-100">站點資訊</h3>
+      <div className="relative mb-[24.5px] mt-8 flex h-[300px]">
+        <div className="mr-auto">
+          <SiteSearch
+            currCity={currCity}
+            currSareas={currSareas}
+            selectSareas={selectSareas}
+            setCurrCity={setCurrCity}
+            setSelectSareas={setSelectSareas}
+            citys={citys}
+            siteNames={siteNames}
+          />
+        </div>
+        <div className="relative max-w-full self-end">
+          <Image
+            src="/site/Frame.png"
+            alt="background image"
+            width={502}
+            height={172}
+            priority
+          />
+        </div>
       </div>
-
-      {/* All Check */}
-      <Checkbox>全部勾選</Checkbox>
-
-      <div className="mt-[15px] grid grid-cols-3 gap-x-6 gap-y-[15px]">
-        {[...Array(10).keys()].map((key) => (
-          <Checkbox key={key}>松山區</Checkbox>
-        ))}
-      </div>
+      <SiteTable currCity={currCity} datas={showSiteTable} />
     </>
   );
 };
