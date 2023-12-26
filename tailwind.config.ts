@@ -18,8 +18,11 @@ const config: Config = {
           '800': 'rgba(103, 117, 16)',
         },
         config: {
-          text: 'rgba(50, 50, 50)'
-        }
+          text: 'rgba(50, 50, 50)',
+        },
+      },
+      maxWidth: {
+        desktop: '1192px',
       },
       spacing: {
         desktop: '124px',

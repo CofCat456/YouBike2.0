@@ -1,16 +1,12 @@
 /* Select */
 .select.ant-select-dropdown {
-
   .ant-select-item.ant-select-item-option.ant-select-item-option-selected {
-    @apply font-medium text-config-text
+    @apply font-medium text-config-text;
   }
 }
 
-
-
 /* Search */
 .search.ant-select.ant-select-open {
-
   .ant-select-selection-placeholder,
   .ant-select-arrow {
     color: theme('colors.primary.100');
