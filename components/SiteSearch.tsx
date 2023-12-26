@@ -13,8 +13,10 @@ interface Props {
   citys: string[];
   siteNames: string[];
   selectSareas: string[];
+  selectSiteName: string | undefined;
   setCurrCity: Dispatch<SetStateAction<string>>;
   setSelectSareas: Dispatch<SetStateAction<string[]>>;
+  setSelectSiteName: Dispatch<SetStateAction<string | undefined>>;
 }
 
 const SiteSearch: React.FC<Props> = ({
@@ -23,8 +25,10 @@ const SiteSearch: React.FC<Props> = ({
   citys,
   siteNames,
   selectSareas,
+  selectSiteName,
   setCurrCity,
   setSelectSareas,
+  setSelectSiteName,
 }) => {
   const [checkAllboxStats, setCheckAllBoxStats] = useState(true);
 
@@ -55,10 +59,11 @@ const SiteSearch: React.FC<Props> = ({
   return (
     <>
       {/* Selectearch block */}
-      <div className="mb-6 flex items-center gap-x-4">
+      <div className="mb-6 flex flex-col gap-x-4 gap-y-2 sm:flex-row sm:items-center">
         <Select
           placeholder="選擇縣市"
           optionFilterProp="label"
+          className="flex-1 sm:flex-none md:min-w-[175px]"
           options={citys.map((city) => ({
             value: city,
             label: city,
@@ -72,11 +77,14 @@ const SiteSearch: React.FC<Props> = ({
         <Search
           placeholder="搜尋站點"
           optionFilterProp="label"
+          className="flex-1"
           options={siteNames.map((siteName) => ({
             value: siteName,
             label: siteName,
             key: siteName,
           }))}
+          value={selectSiteName}
+          onChange={(value: string) => setSelectSiteName(value)}
         />
       </div>
 
@@ -89,7 +97,7 @@ const SiteSearch: React.FC<Props> = ({
         全部勾選
       </Checkbox>
 
-      <div className="mt-[15px] grid grid-cols-3 gap-x-6 gap-y-[15px]">
+      <div className="mt-[15px] grid grid-cols-2 gap-x-6 gap-y-[15px] md:grid-cols-3">
         {currSareas.map((sarea) => (
           <Checkbox
             key={sarea}

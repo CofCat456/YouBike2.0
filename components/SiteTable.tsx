@@ -21,18 +21,21 @@ const columns: ColumnsType<DataType> = [
     dataIndex: 'city',
     key: 'city',
     align: 'center',
+    sorter: (a, b) => a.city.length - b.city.length,
   },
   {
     title: '區域',
     dataIndex: 'sarea',
     key: 'sarea',
     align: 'center',
+    sorter: (a, b) => a.sarea.length - b.sarea.length,
   },
   {
     title: '站點名稱',
     dataIndex: 'sna',
     key: 'sna',
     align: 'center',
+    sorter: (a, b) => a.sna.length - b.sna.length,
   },
   {
     title: '可借車輛',
@@ -40,6 +43,7 @@ const columns: ColumnsType<DataType> = [
     dataIndex: 'sbi',
     align: 'center',
     render: (text) => <span className="text-primary-100">{text}</span>,
+    sorter: (a, b) => a.sbi - b.sbi,
   },
   {
     title: '可還空位',
@@ -47,6 +51,7 @@ const columns: ColumnsType<DataType> = [
     dataIndex: 'bemp',
     align: 'center',
     render: (text) => <span className="text-primary-100">{text}</span>,
+    sorter: (a, b) => a.bemp - b.bemp,
   },
 ];
 
@@ -57,11 +62,12 @@ const SiteTable: React.FC<Props> = ({ currCity, datas }) => (
       city: currCity,
       key: data.sno,
       sarea: data.sarea,
-      sna: data.sno,
+      sna: data.sna,
       sbi: data.sbi,
       bemp: data.bemp,
     }))}
     pagination={{ hideOnSinglePage: true }}
+    scroll={{ x: 1000 }}
   />
 );
 

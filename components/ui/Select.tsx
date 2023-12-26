@@ -6,6 +6,7 @@ import { type FunctionComponent } from 'react';
 export const defaultConfig: SelectProps = {
   bordered: true,
   showSearch: true,
+  allowClear: true,
 };
 
 const Select: FunctionComponent<SelectProps> = (props) => {

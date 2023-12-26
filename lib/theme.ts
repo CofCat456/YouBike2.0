@@ -3,7 +3,8 @@ import type { ThemeConfig } from 'antd';
 
 const theme: ThemeConfig = {
   token: {
-    colorPrimary: '#B8CC22',
+    colorPrimary: 'rgb(184, 204, 34)',
+    colorInfo: 'reb(184, 204, 34)',
     colorTextBase: '#323232',
   },
   components: {
@@ -22,8 +23,15 @@ const theme: ThemeConfig = {
       headerBg: 'rgb(184, 204, 34)',
       headerSplitColor: 'rgb(184, 204, 34)',
       headerColor: 'rgb(255, 255, 255)',
+      headerSortHoverBg: 'rgba(103, 117, 16, .8)',
+      headerSortActiveBg: 'rgba(103, 117, 16, .8)',
       headerBorderRadius: 20,
       padding: 20,
+      algorithm: true,
+    },
+    Button: {
+      colorPrimaryHover: 'rgb(184, 204, 34)',
+      algorithm: true,
     },
   },
 };

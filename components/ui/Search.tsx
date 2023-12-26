@@ -7,6 +7,7 @@ export const defaultConfig: SelectProps = {
   popupClassName: 'search',
   bordered: true,
   showSearch: true,
+  allowClear: true,
 };
 
 const Search: FunctionComponent<SelectProps> = (props) => {
