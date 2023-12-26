@@ -10,9 +10,9 @@ interface Props {
   datas: SiteData[];
 }
 
-type DataType = { city: string } & Pick<
+type DataType = { key: string; city: string } & Pick<
   SiteData,
-  'sno' | 'sarea' | 'sna' | 'sbi' | 'bemp'
+  'sarea' | 'sna' | 'sbi' | 'bemp'
 >;
 
 const columns: ColumnsType<DataType> = [

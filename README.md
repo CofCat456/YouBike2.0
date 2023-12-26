@@ -12,4 +12,3 @@ Welcome to YouBike 微笑單車, 推廣民眾騎乘自行車作為短程接駁�
 ## :camera: 截圖
 
 <img width="1471" alt="Screenshot" src="./public/screenshots/screenshot_1.png?raw=true">
-

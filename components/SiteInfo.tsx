@@ -26,9 +26,9 @@ const SiteInfo: React.FC<Props> = ({ siteDatas, sareas }) => {
       : currCity === '台北市'
         ? siteDatas
         : mockSiteDatas.map((siteData) => ({
-          ...siteData,
-          sna: siteData.sna.replace('YouBike2.0_', ''),
-        }));
+            ...siteData,
+            sna: siteData.sna.replace('YouBike2.0_', ''),
+          }));
 
   const showSiteData = getCurrSiteDatas.filter((siteData) =>
     selectSareas.includes(siteData.sarea)
