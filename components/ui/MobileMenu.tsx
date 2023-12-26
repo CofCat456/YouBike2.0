@@ -4,27 +4,33 @@ import { Button } from 'antd';
 import clsx from 'clsx';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 
-import { HamburgerIcon } from '~/assets';
+import { CloseIcon, HamburgerIcon } from '~/assets';
 import { navList } from '~/data/navs';
 const MobileMenu: React.FC = () => {
-  const [mobileMenuStatus, setMobileMenuStatus] = useState(false);
+  const [isShowMenu, setIsShowMenu] = useState(false);
 
   const pathname = usePathname();
+
+  const toggleShowMenu = useCallback(() => {
+    setIsShowMenu((preStatus) => !preStatus)
+  }, [])
 
   return (
     <div className="block md:hidden">
       <Button
+        type='default'
         ghost={true}
         shape="circle"
-        icon={<HamburgerIcon />}
-        onClick={() => setMobileMenuStatus(!mobileMenuStatus)}
+        className='humburgerBtn'
+        icon={isShowMenu ? <CloseIcon /> : <HamburgerIcon />}
+        onClick={toggleShowMenu}
       />
       <div
         className={clsx(
           'fixed left-0 top-[66px] z-10 h-[95dvh] w-screen bg-primary-100 p-8 transition-transform duration-500 ease-in-out',
-          mobileMenuStatus ? 'translate-y-0' : 'translate-y-full'
+          isShowMenu ? 'translate-y-0' : 'translate-y-full'
         )}
       >
         <nav className="inline-flex h-full flex-col justify-between">
@@ -43,7 +49,7 @@ const MobileMenu: React.FC = () => {
               >
                 <Link
                   href={nav.link}
-                  onClick={() => setMobileMenuStatus(false)}
+                  onClick={() => setIsShowMenu}
                 >
                   {nav.title}
                 </Link>
@@ -58,7 +64,7 @@ const MobileMenu: React.FC = () => {
           </button>
         </nav>
       </div>
-    </div>
+    </div >
   );
 };
 

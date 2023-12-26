@@ -7,6 +7,7 @@ import Header from '~/components/Header';
 import { sansFont } from '~/lib/font';
 
 import StyledComponentsRegistry from './AntdRegistry';
+import Home from './Home';
 
 export const metadata: Metadata = {
   title: 'YouBike 微笑單車 - 站點地圖',
@@ -24,6 +25,7 @@ export default function RootLayout({
       <body className={`${sansFont.variable} font-sans text-config-text`}>
         <StyledComponentsRegistry>
           <Header />
+          <Home />
           {children}
         </StyledComponentsRegistry>
       </body>

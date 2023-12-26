@@ -17,7 +17,6 @@ const theme: ThemeConfig = {
       optionSelectedBg: '#f6f6f6',
       colorBgElevated: '#f6f6f6',
       optionSelectedColor: '#B8CC22',
-      algorithm: true,
     },
     Table: {
       headerBg: 'rgb(184, 204, 34)',
@@ -27,11 +26,9 @@ const theme: ThemeConfig = {
       headerSortActiveBg: 'rgba(103, 117, 16, .8)',
       headerBorderRadius: 20,
       padding: 20,
-      algorithm: true,
     },
     Button: {
-      colorPrimaryHover: 'rgb(184, 204, 34)',
-      algorithm: true,
+      "colorPrimaryHover": "rgb(250, 173, 20)",
     },
   },
 };

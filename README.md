@@ -7,6 +7,7 @@ Welcome to YouBike 微笑單車, 推廣民眾騎乘自行車作為短程接駁�
 - NextJS 14
 - App Router
 - Middleware
+- Tailwind CSS
 - Ant Design 5.0
 
 ## :camera: 截圖

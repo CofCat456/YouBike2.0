@@ -7,8 +7,14 @@
 
 /* Search */
 .search.ant-select.ant-select-open {
+
   .ant-select-selection-placeholder,
   .ant-select-arrow {
     color: theme('colors.primary.100');
   }
+}
+
+/* Button */
+.ant-btn-circle.ant-btn-default.ant-btn-icon-only.ant-btn-background-ghost.humburgerBtn.ant-btn:hover {
+  border-color: theme('colors.primary.100');
 }
